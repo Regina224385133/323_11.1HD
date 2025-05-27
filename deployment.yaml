@@ -1,0 +1,27 @@
+   # deployment.yaml
+   apiVersion: apps/v1
+   kind: Deployment
+   metadata:
+     name: lifesync-web
+   spec:
+     replicas: 3
+     selector:
+       matchLabels:
+         app: lifesync-web
+     template:
+       metadata:
+         labels:
+           app: lifesync-web
+       spec:
+         containers:
+         - name: lifesync-web
+           image: lifesync-web:latest
+           ports:
+           - containerPort: 3000
+           resources:
+             limits:
+               cpu: "1"
+               memory: "1Gi"
+             requests:
+               cpu: "500m"
+               memory: "512Mi"
